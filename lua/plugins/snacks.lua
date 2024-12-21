@@ -8,6 +8,7 @@ return {
       notifier = { enabled = true },
       quickfile = { enabled = true },
       statuscolumn = { enabled = true },
+      zen = {},
       words = { enabled = true },
       dashboard = {
         width = 60,
@@ -33,7 +34,7 @@ return {
             { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
             { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           },
-          
+
           header = "6E 65 6F 76 69 6D",
         },
         -- item field formatters
