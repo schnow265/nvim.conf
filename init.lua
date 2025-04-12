@@ -1,3 +1,7 @@
+if vim.g.neovide then
+  require("config.neovide")
+end
+
 if vim.loop.os_uname().sysname == "Windows_NT" then
   require("os.win")
 elseif vim.loop.os_uname().sysname == "Linux" then
@@ -9,7 +13,3 @@ vim.g.mapleader = "<space>"
 require("config.lazy")
 
 vim.o.number = true
-
-if vim.g.neovide then
-  require("config.neovide")
-end

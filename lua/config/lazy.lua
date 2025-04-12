@@ -25,7 +25,6 @@ require("lazy").setup({
     { import = "plugins.git" }, -- import git overrides
     { import = "plugins.lsp" }, -- import lsp overrides
     { import = "plugins.lsp.langs" }, -- import lsp language provider configs
-    { import = "plugins.test" }, -- import test overrides
     { import = "plugins.fun" }, -- just some funny things
   },
   defaults = {
@@ -40,7 +39,7 @@ require("lazy").setup({
   install = { colorscheme = { "catppuccin" } },
   checker = {
     enabled = true, -- check for plugin updates periodically
-    notify = false, -- notify on update
+    notify = true, -- notify on update
   }, -- automatically check for plugin updates
   performance = {
     rtp = {
