@@ -3,32 +3,33 @@ return {
     "williamboman/mason.nvim",
     opts = {
       registries = {
-        "github:mason-org/mason-registry",
         "github:crashdummyy/mason-registry",
+        "github:mason-org/mason-registry",
       },
       ensure_installed = {
+        "bacon",
         "csharp-language-server",
-        "clang-format",
-        "clangd",
-        "cmakelang",
-        "cmakelint",
-        "codelldb",
-        "gitlab-ci-ls",
+        "csharpier",
         "gitleaks",
         "gitlint",
         "lua-language-server",
-        "ruff",
-        "shellcheck",
-        "shfmt",
-        "stylua",
-        "bacon",
-        "rust-analyzer",
-        "csharpier",
-        "roslyn",
         "markdownlint",
         "netcoredbg",
+        "roslyn",
+        "ruff",
+        "rust-analyzer",
+        "shellcheck",
+        "shfmt",
         "sonarlint-language-server",
+        "stylua",
       },
+      ui = {
+        icons = {
+            package_installed = "",
+            package_pending = "",
+            package_uninstalled = ""
+        }
+      }
     },
   },
 }

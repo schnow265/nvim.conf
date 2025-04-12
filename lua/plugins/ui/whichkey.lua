@@ -37,12 +37,6 @@ return {
             group = "Usage Tracker"
         }, -- Usage Tracker
         {
-            "<leader>l",
-            group = "Git"
-        }, {
-            "<leader>lg",
-            desc = "LazyGit"
-        }, {
             "<leader>t",
             group = "Testing"
         }, -- vim-test
