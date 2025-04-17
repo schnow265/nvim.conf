@@ -52,6 +52,10 @@ vim.keymap.set("n", "<leader>du", function()
   dapui.toggle() -- Toggle the dap-ui windows
 end, { desc = "Debug: Toggle UI" })
 
+vim.keymap.set("n", "<leader>dd", function()
+  dapui.open() -- Toggle the dap-ui windows
+end, { desc = "Debug: Open UI" })
+
 vim.keymap.set("n", "<leader>de", function()
   dapui.eval() -- Evaluate the variable under the cursor
 end, { desc = "Debug: Evaluate" })
