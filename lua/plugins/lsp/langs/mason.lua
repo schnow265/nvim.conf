@@ -1,15 +1,13 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       registries = {
         "github:crashdummyy/mason-registry",
         "github:mason-org/mason-registry",
       },
       ensure_installed = {
-        "bacon",
         "csharpier",
-        "gitleaks",
         "gitlint",
         "harper-ls",
         "lua-language-server",
@@ -17,12 +15,8 @@ return {
         "netcoredbg",
         "omnisharp",
         "roslyn",
-        "ruff",
-        "rust-analyzer",
-        "shellcheck",
         "shfmt",
         "sonarlint-language-server",
-        "stylua",
       },
       ui = {
         icons = {
@@ -31,22 +25,20 @@ return {
           package_uninstalled = "",
         },
       },
-      max_concurrent_installers = 1,
+      max_concurrent_installers = 10,
       pip = {
         upgrade_pip = true,
         install_args = {
           "--compile",
           "--no-warn-script-location",
-          "--progress-bar",
-          "raw",
         },
       },
     },
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     dependencies = {
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       "neovim/nvim-lspconfig",
     },
     opts = {
