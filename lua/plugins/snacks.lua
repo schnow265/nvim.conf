@@ -60,7 +60,7 @@ return {
         notifier = { enabled = true },
         quickfile = { enabled = true },
         statuscolumn = { enabled = true },
-        zen = {},
+        zen = { enabled = false },
         words = { enabled = true },
         dashboard = {
           width = 60,
@@ -82,10 +82,10 @@ return {
               { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
               { icon = " ", key = "q", desc = "Quit", action = ":qa" },
             },
-            header = random_header, -- Properly sanitized string
+            header = random_header,
           },
           sections = {
-            { section = "header", padding = 2 }, -- Add padding above and below the header
+            { section = "header", padding = 2},
             { section = "keys", gap = 1, padding = 1 },
             { section = "startup" },
           },

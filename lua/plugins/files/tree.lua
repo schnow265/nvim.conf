@@ -7,4 +7,7 @@ return {
       },
     },
   },
+  keys = {
+    {"<leader>fN", "<cmd>Neotree focus<cr>"}
+  }
 }

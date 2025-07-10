@@ -12,15 +12,14 @@ return {
       colorscheme = {
         enable = false,
         options = {
-          persist = true, -- very efficient mechanism to Remember selected colorscheme
+          persist = true,      -- very efficient mechanism to Remember selected colorscheme
           write_shada = false, -- If you open multiple nvim instances, then probably you need to enable this
         },
       },
     })
-    -- === Suggested Keymaps: ===
-    vim.keymap.set("n", "<leader>ss", ":Namu symbols<cr>", {
-      desc = "Jump to LSP symbol",
-      silent = true,
-    })
   end,
+  keys = {
+    { "<leader>ss", "<cmd>Namu symbols<cr>", desc = "Jump to LSP symbol", silent = true },
+    { "<leader>sw", "<cmd>Namu workspace<cr>", desc = "LSP Symbols - Workspace", silent = true }
+  }
 }
