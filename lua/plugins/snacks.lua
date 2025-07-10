@@ -11,7 +11,7 @@ return {
         if not f then
           return "6E 65 6F 76 69 6D" -- Default if file doesn't exist
         end
-        
+
         local lines = {}
         for line in f:lines() do
           if line and line:match("%S") and not line:match("^#") then  -- Skip empty lines and lines starting with '#'
@@ -19,15 +19,15 @@ return {
           end
         end
         f:close()
-        
+
         if #lines == 0 then
           return "6E 65 6F 76 69 6D" -- Default if file is empty
         end
-        
+
         -- Get a random line from the file
         math.randomseed(os.time())
         local random_header = lines[math.random(#lines)]
-        
+
         -- Process the header to remove quotes if needed
         if random_header:sub(1,1) == '"' then
           random_header = random_header:gsub('^"(.+)".*$', '%1')
@@ -38,7 +38,7 @@ return {
 
         return random_header
       end
-      
+
       -- Catch any errors during header generation
       local random_header = "6E 65 6F 76 69 6D"
       local ok, result = pcall(get_random_header)
@@ -47,14 +47,14 @@ return {
       else
         vim.notify("Error loading header: " .. tostring(result), vim.log.levels.WARN)
       end
-      
+
       -- Ensure snacks is properly loaded
       local success, snacks = pcall(require, "snacks")
       if not success then
         vim.notify("Failed to load snacks plugin: " .. tostring(snacks), vim.log.levels.ERROR)
         return
       end
-      
+
       snacks.setup({
         bigfile = { enabled = true },
         notifier = { enabled = true },

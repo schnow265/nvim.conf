@@ -20,12 +20,11 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
     { import = "plugins" },
-    { import = "plugins.ui" }, -- import ui overrides
-    { import = "plugins.files" }, -- import files overrides
-    { import = "plugins.git" }, -- import git overrides
-    { import = "plugins.lsp" }, -- import lsp overrides
-    { import = "plugins.lsp.langs" }, -- import lsp language provider configs
-    { import = "plugins.fun" }, -- just some funny things
+    { import = "plugins.ui" },
+    { import = "plugins.files" },
+    { import = "plugins.git" },
+    { import = "plugins.lsp" },
+    { import = "plugins.lsp.langs" },
     { import = "plugins.editor" },
   },
   defaults = {
@@ -54,8 +53,4 @@ require("lazy").setup({
       },
     },
   },
-})
-
-require("lazydev").setup({
-  library = { "nvim-dap-ui" },
 })

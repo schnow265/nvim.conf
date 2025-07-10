@@ -20,6 +20,7 @@
   "mini.icons": { "branch": "main", "commit": "94848dad1589a199f876539bd79befb0c5e3abf0" },
   "mini.pairs": { "branch": "main", "commit": "42407ccb80ec59c84e7c91d815f42ed90a8cc093" },
   "mini.pick": { "branch": "main", "commit": "ebe3dacb352bb054607e5ed0fd461e2251a7a280" },
+  "mini.trailspace": { "branch": "main", "commit": "13e3fcdac308ae2072a015456be88e1ecb7836d3" },
   "namu.nvim": { "branch": "main", "commit": "6759df3cddb1d6d11442b953f8b63e64350229f3" },
   "neo-tree.nvim": { "branch": "main", "commit": "fba6d1f9b5ed031f983b2cb413d69838d88d76fa" },
   "noice.nvim": { "branch": "main", "commit": "0427460c2d7f673ad60eb02b35f5e9926cf67c59" },
@@ -47,6 +48,7 @@
   "ts-comments.nvim": { "branch": "main", "commit": "1bd9d0ba1d8b336c3db50692ffd0955fe1bb9f0c" },
   "typr": { "branch": "main", "commit": "bdd9ef7143702851edd1dac85101e0a537056d2f" },
   "undotree": { "branch": "master", "commit": "15d91b0afe04ea9ba5cd53e30190d1602af9a925" },
+  "vim-coach.nvim": { "branch": "master", "commit": "ed31e7b9450691199288180a922d8166ae11a0b9" },
   "volt": { "branch": "main", "commit": "7b8c5e790120d9f08c8487dcb80692db6d2087a1" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
