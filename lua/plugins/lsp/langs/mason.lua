@@ -10,7 +10,6 @@ return {
         "csharpier",
         "gitlint",
         "harper-ls",
-        "lua-language-server",
         "netcoredbg",
         "omnisharp",
         "roslyn",
@@ -39,7 +38,7 @@ return {
     "mason-org/mason-lspconfig.nvim",
     dependencies = {
       "mason-org/mason.nvim",
-      "neovim/nvim-lspconfig",
+      -- "neovim/nvim-lspconfig",
     },
     opts = {
       automatic_installation = true,
