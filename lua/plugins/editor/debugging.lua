@@ -23,8 +23,8 @@ return {
     end,
     keys = {
       { "<leader>du", function() require("dapui").toggle() end, desc = "DAPUI: Toggle UI" },
-      { "<leader>dd", function() require("dapui").open() end, desc = "DAPUI: Open UI" },
-      { "<leader>de", function() require("dapui").eval() end, desc = "DAPUI: Evaluate" },
+      { "<leader>dd", function() require("dapui").open() end,   desc = "DAPUI: Open UI" },
+      { "<leader>de", function() require("dapui").eval() end,   desc = "DAPUI: Evaluate" },
     }
   },
   {
