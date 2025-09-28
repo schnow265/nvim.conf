@@ -1,11 +1,11 @@
 return {
   {
-    "echasnovski/mini.pick",
+    "nvim-mini/mini.pick",
     dependencies = {
-      "echasnovski/mini.icons"
+      "nvim-mini/mini.icons"
     },
   },
   {
-    "echasnovski/mini.trailspace"
+    "nvim-mini/mini.trailspace"
   }
 }
