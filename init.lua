@@ -1,3 +1,7 @@
+if vim.g.neovide then
+  require("configs.neovide")
+end
+
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
