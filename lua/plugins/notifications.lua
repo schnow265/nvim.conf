@@ -1,6 +1,8 @@
 return {{
-  "j-hui/fidget.nvim",
+  "rcarriga/nvim-notify",
+  lazy = false,
   opts = {
-    -- options
-  },
+    stages = "slide",
+    render = "compact",
+  }
 }}
