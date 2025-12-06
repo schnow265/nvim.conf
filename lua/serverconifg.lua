@@ -1,13 +1,5 @@
 local M = {}
 
-M.getKeys = function (tbl)
-    local keys = {}
-    for k, _ in pairs(tbl) do
-        table.insert(keys, k)
-    end
-    return keys
-end
-
 
 M.lspconfig = {
     elixirls = {},
@@ -27,9 +19,26 @@ M.lspconfig = {
     clangd = {},
     ruff = {},
     systemd_ls = {},
-    ty = {}
+    ty = {},
+    bacon_ls = {},
+    codebook = {},
+    docker_language_server = {},
+    asm_lsp = {},
+    zk = {
+        filetyles = {
+            "markdown",
+            "text"
+        }
+    },
+    zls = {},
+    yamlls = {
+        yaml = {
+            schemas = {
+                ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+                ["https://gitlab.com/gitlab-org/gitlab-foss/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "/.gitlab-ci.y*ml",
+            }
+        }
+    },
 }
-
-M.mason = M.getKeys(M.lspconfig)
 
 return M
