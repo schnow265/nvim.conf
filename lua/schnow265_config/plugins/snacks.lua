@@ -56,10 +56,10 @@ return {
       end
 
       snacks.setup({
-        bigfile = { enabled = true },
-        notifier = { enabled = true },
-        quickfile = { enabled = true },
-        statuscolumn = { enabled = true },
+        bigfile = { enabled = false },
+        notifier = { enabled = false },
+        quickfile = { enabled = false },
+        statuscolumn = { enabled = false },
         zen = { enabled = false },
         words = { enabled = true },
         dashboard = {
