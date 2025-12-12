@@ -85,9 +85,9 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
 -- generate help pages from docs
-vim.cmd("helptags " .. vim.fn.stdpath("config") .. "/doc")
+vim.cmd('helptags ' .. vim.fn.stdpath 'config' .. '/doc')
 
-require("config.neovide")
+require 'config.neovide'
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -109,6 +109,9 @@ require 'lazy-bootstrap'
 
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
+
+-- IMPORTANT: Overwrite vim.notify api to nvim-notify
+vim.notify = require 'notify'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
