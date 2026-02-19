@@ -89,6 +89,49 @@ require('lazy').setup({
             lazy = '💤 ',
         },
     },
+    concurrency = jit.os:find("Windows") and 1 or nil,
+    pkg = {
+        enabled = true,
+        cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
+        -- the first package source that is found for a plugin will be used.
+        sources = {
+            "lazy",
+            "rockspec", -- will only be used when rocks.enabled is true
+            "packspec",
+        },
+    },
+    rocks = {
+        enabled = true,
+        root = vim.fn.stdpath("data") .. "/lazy-rocks",
+        server = "https://lumen-oss.github.io/rocks-binaries/",
+        -- use hererocks to install luarocks?
+        -- set to `nil` to use hererocks when luarocks is not found
+        -- set to `true` to always use hererocks
+        -- set to `false` to always use luarocks
+        hererocks = nil,
+    },
+    headless = {
+        -- show the output from process commands like git
+        process = true,
+        -- show log messages
+        log = true,
+        -- show task start/end
+        task = true,
+        -- use ansi colors
+        colors = true,
+    },
+    readme = {
+        enabled = true,
+        root = vim.fn.stdpath("state") .. "/lazy/readme",
+        files = { "README.md", "lua/**/README.md" },
+        -- only generate markdown helptags for plugins that don't have docs
+        skip_if_doc_exists = true,
+    },
+    performance = {
+        cache = {
+            enabled = true,
+        },
+    },
 })
 
 -- vim: ts=2 sts=2 sw=2 et
