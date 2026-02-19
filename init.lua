@@ -110,7 +110,7 @@ require 'lazy-bootstrap'
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
 
--- IMPORTANT: Overwrite vim.notify api to nvim-notify
+-- IMPORTANT: Overwrite vim.notify api to the nvim-notify plugin
 vim.notify = require 'notify'
 
 -- The line beneath this is called `modeline`. See `:help modeline`

@@ -76,3 +76,4 @@ The [tinydrm] code seems like absolute pure shit that has never seen a compiler.
 criminally stupid? *I* will show you stupid! - clang
 So please burn that patch in the darkest pits of hell and let's try to forget it ever existed. Ok? - Linus Torvalds
 My price is the guarantee for your quality - Andre Reitermayr
+Debugging: When you are the detective and the murderer - Anonymous
