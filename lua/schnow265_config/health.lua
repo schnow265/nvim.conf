@@ -1,88 +1,124 @@
 local M = {}
 
 local function canRequire(moduleName)
-  local success, _ = pcall(require, moduleName)
-  return success
+    local success, _ = pcall(require, moduleName)
+    return success
 end
 
-function split_string(str)
-  local result = {}
-  for word in string.gmatch(str, '%S+') do
-    table.insert(result, word)
-  end
-  return result
+local function isInstalled(executable)
+    if vim.fn.executable(executable) == 1 then
+        vim.health.ok(string.format("'%s' is installed", executable))
+    else
+        vim.health.error(string.format("'%s' is not installed", executable))
+    end
+end
+
+local function checkVersion(executable)
+    -- First verify installation
+    if vim.fn.executable(executable) ~= 1 then
+        return
+    end
+
+    -- Run "<executable> --version"
+    local result = vim.system({ executable, "--version" }, { text = true }):wait()
+
+    if result.code == 0 then
+        local output = (result.stdout or ""):gsub("%s+$", "")
+        if output == "" then
+            vim.health.info(string.format("'%s --version' returned no output", executable))
+        else
+            vim.health.info(output)
+        end
+    else
+        vim.health.warning(string.format(
+            "'%s' is installed, but '%s --version' failed (exit code %d). The '--version' argument may be unsupported or incorrect.",
+            executable,
+            executable,
+            result.code
+        ))
+    end
 end
 
 local executables = {
-  'git',
-  'cargo',
-  'npm',
+    'git',
+    'cargo',
+    'npm',
+    'dotnet',
+    'uv'
 }
 
 local programming_languages = {
-  elixir = {
-    'iex',
-    'mix',
-    'elixir',
-  },
-}
-
-local version_commands = {
-  'elixir --version',
-  'git --version',
+    elixir = {
+        'iex',
+        'mix',
+        'elixir',
+    },
+    dotnet = {
+        'dotnet'
+    },
+    python = {
+        'python',
+        'uv'
+    },
+    rust = {
+        'rustup',
+        'cargo',
+        'rustc',
+    },
+    ["Version Control"] = {
+        'git'
+    }
 }
 
 M.check = function()
-  vim.health.start 'Required Executables'
+    vim.health.start 'Required Executables'
 
-  for _, executable in ipairs(executables) do
-    if vim.fn.executable(executable) == 1 then
-      vim.health.ok(string.format("'%s' is installed", executable))
+    for _, executable in ipairs(executables) do
+        isInstalled(executable)
+    end
+
+    vim.health.start 'Local files'
+
+    local headerFile = vim.fn.stdpath 'config' .. '/header.txt'
+    local f = io.open(headerFile, 'r')
+
+    if not f then
+        vim.health.error "The file 'header.txt' does not exist in the config root, or neovim failed to open it."
     else
-      vim.health.error(string.format("'%s' is not installed", executable))
-    end
-  end
-
-  vim.health.start 'Local files'
-
-  local headerFile = vim.fn.stdpath 'config' .. '/header.txt'
-  local f = io.open(headerFile, 'r')
-
-  if not f then
-    vim.health.error "The file 'header.txt' does not exist in the config root, or neovim failed to open it."
-  else
-    vim.health.ok "'header.txt' is avaliable and readable."
-  end
-
-  vim.health.start 'require-able config options'
-
-  if canRequire 'config.serverconfig' then
-    vim.health.ok 'serverconfig could be required'
-
-    local lsp_configs = require('config.serverconfig').lspconfig
-
-    local count = 0
-    for _, _ in pairs(lsp_configs) do
-      count = count + 1
+        vim.health.ok "'header.txt' is avaliable and readable."
     end
 
-    vim.health.info(string.format('Configured %d LSP servers.', count))
-  else
-    vim.health.error "could not require 'config.serverconfig'!"
-  end
+    vim.health.start 'require-able config options'
 
-  --[[vim.health.start("Version checks")
+    if canRequire 'config.serverconfig' then
+        vim.health.ok 'serverconfig could be required'
 
-    for _, command in ipairs(version_commands) do
-        local output_obj = vim.system(split_string(command), { text = true }):wait()
+        local lsp_configs = require('config.serverconfig').lspconfig
 
-        if output_obj.wait.code == 0 then
-            vim.health.ok(output_obj.wait.stdout)
-        else
-            vim.health.error(string.format("Failed runnig command '%s':\n\nSTDERR:\n%s\n\nSTDOUT:\n%s", command,
-                output_obj.wait.stderr, output_obj.wait.stdout))
+        local count = 0
+        for _, _ in pairs(lsp_configs) do
+            count = count + 1
         end
-    end--]]
+
+        if count == 0 then
+            vim.health.warning("Either config.serverconfig.lspconfig is empty or something is wrong.")
+        else
+            vim.health.info(string.format('Configured %d LSP servers.', count))
+        end
+    else
+        vim.health.error "could not require 'config.serverconfig'!"
+    end
+
+    vim.health.start "===== Programming language checks ====="
+
+    for language, commands in pairs(programming_languages) do
+        vim.health.start(string.format("\nGroup '%s'", language))
+
+        for _, command in ipairs(commands) do
+            isInstalled(command)
+            checkVersion(command)
+        end
+    end
 end
 
 return M
