@@ -88,6 +88,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.cmd('helptags ' .. vim.fn.stdpath 'config' .. '/doc')
 
 require 'config.neovide'
+require 'config.nvim'
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -112,6 +113,9 @@ require 'lazy-plugins'
 
 -- IMPORTANT: Overwrite vim.notify api to the nvim-notify plugin
 vim.notify = require 'notify'
+
+require 'schnow265.config.packadd'
+require 'schnow265.config.ts'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
