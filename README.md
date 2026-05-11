@@ -9,7 +9,7 @@ Add to `.chezmoiexternal.toml`:
 ```toml
 [".config/nvim"]
 type = "git-repo"
-url = "https://github.com/schnow265/nvim.conf.git"
+url = "https://gitlab.com/schnow265/nvim.conf.git"
 refreshPeriod = "24h"
 ```
 
