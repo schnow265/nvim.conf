@@ -17,6 +17,6 @@ refreshPeriod = "24h"
 
 ## NOTE: This Repository has moved to GitLab
 
-This is being used as a mirror which might fer out of sync *really* fast...
+GitHub is being used as a mirror which might fer out of sync *really* fast...
 
 [Just got to GitLab.](https://gitlab.com/schnow265/nvim.conf.git)
