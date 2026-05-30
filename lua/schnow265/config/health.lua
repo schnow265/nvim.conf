@@ -30,35 +30,29 @@ local function checkVersion(executable)
             vim.health.info(output)
         end
     else
-        vim.health.warning(string.format(
-            "'%s' is installed, but '%s --version' failed (exit code %d). The '--version' argument may be unsupported or incorrect.",
+        vim.health.warn(string.format(
+            "'%s' is installed, but '%s --version' failed (exit code %d).",
             executable,
             executable,
             result.code
-        ))
+        ), "The '--version' argument may be unsupported or incorrect.")
     end
 end
 
-local executables = {
-    'git',
-    'cargo',
-    'npm',
-    'dotnet',
-    'uv'
-}
-
-local programming_languages = {
+local cli_tools = {
     elixir = {
         'iex',
         'mix',
-        'elixir',
+        'elixir'
     },
     dotnet = {
-        'dotnet'
+        'dotnet',
+        'csharp-ls'
     },
     python = {
-        'python',
-        'uv'
+        'uv',
+        'ruff',
+        'ty'
     },
     rust = {
         'rustup',
@@ -67,17 +61,30 @@ local programming_languages = {
     },
     ["Version Control"] = {
         'git'
+    },
+    ["C/C++"] = {
+        'clang',
+        'clang++',
+        'lldb',
+        'clangd'
+    },
+    ["General Tools"] = {
+        'trivy',
+        'ast-grep'
+    },
+    lua = {
+        'lua',
+        'lua-language-server',
+        'stylua'
     }
 }
 
+local lua_libs = {
+    'schnow265.lib'
+}
+
 M.check = function()
-    vim.health.start 'Required Executables'
-
-    for _, executable in ipairs(executables) do
-        isInstalled(executable)
-    end
-
-    vim.health.start 'Local files'
+    vim.health.start '===== Local files ====='
 
     local headerFile = vim.fn.stdpath 'config' .. '/header.txt'
     local f = io.open(headerFile, 'r')
@@ -88,7 +95,7 @@ M.check = function()
         vim.health.ok "'header.txt' is avaliable and readable."
     end
 
-    vim.health.start 'require-able config options'
+    vim.health.start '===== require-able config options ====='
 
     if canRequire 'config.serverconfig' then
         vim.health.ok 'serverconfig could be required'
@@ -101,7 +108,8 @@ M.check = function()
         end
 
         if count == 0 then
-            vim.health.warning("Either config.serverconfig.lspconfig is empty or something is wrong.")
+            vim.health.warn("Either config.serverconfig.lspconfig is empty or something is wrong.",
+                "Check if the file exists and looks fine.")
         else
             vim.health.info(string.format('Configured %d LSP servers.', count))
         end
@@ -109,10 +117,10 @@ M.check = function()
         vim.health.error "could not require 'config.serverconfig'!"
     end
 
-    vim.health.start "===== Programming language checks ====="
+    vim.health.start "===== CLI Tools ====="
 
-    for language, commands in pairs(programming_languages) do
-        vim.health.start(string.format("\nGroup '%s'", language))
+    for language, commands in pairs(cli_tools) do
+        vim.health.start(string.format("Group '%s'", language))
 
         for _, command in ipairs(commands) do
             isInstalled(command)
@@ -120,23 +128,26 @@ M.check = function()
         end
     end
 
-    vim.health.start "Library functions"
+    vim.health.start "===== Library functions ====="
 
-    if canRequire 'schnow265.lib' then
-        local lib = require 'schnow265.lib'
+    for _, config in pairs(lua_libs) do
+        if canRequire(config) then
+            local lib = require(config)
 
-        local count = 0
-        for _, _ in pairs(lib) do
-            count = count + 1
-        end
+            local count = 0
+            for _, _ in pairs(lib) do
+                count = count + 1
+            end
 
-        if count == 0 then
-            vim.health.warning("No functions/exports found in library.")
+            if count == 0 then
+                vim.health.warn("No functions/exports found in library.", "Library may be in development. Ignore this.")
+            else
+                vim.health.ok(string.format('Found %d exports in library %s', count, config))
+            end
         else
-            vim.health.ok(string.format('Found %d exports', count))
+            vim.health.error(
+                string.format("Could not require '%s'. Please make sure it is actually there.", config))
         end
-    else
-        vim.health.error "Could not require 'schnow265.lib'. Please make sure it is actually there."
     end
 end
 
