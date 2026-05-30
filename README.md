@@ -2,6 +2,17 @@
 
 My extremey bad nvim config for my purposes.
 
+## Avaliable confis
+
+This repo has some "playgounds" for some of the more experimental frameworks.
+
+| Branch | Base Framework | URL | Comment | 
+| --- | --- | --- | --- |
+| `master` | kickstart.nvim | <https://github.com/nvim-lua/kickstart.nvim> | Default. |
+| `minimax` | MiniMax | <https://github.com/nvim-mini/MiniMax> | Only initialized, not really used |
+| `rocks.nvim` | rocks.nvim | <https://github.com/lumen-oss/rocks.nvim> | Seems interesting |
+| `NvChad` | NvChad | <https://nvchad.com> | Exists for some readon in the repo. |
+
 ## Usage
 
 Add to `.chezmoiexternal.toml`:
