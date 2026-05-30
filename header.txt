@@ -38,7 +38,7 @@ Programming is not about typing, it’s about thinking - Rich Hickey
 The most effective debugging tool is still careful thought, coupled with judiciously placed print statements - Brian Kernighan
 A language that doesn’t affect the way you think about programming is not worth knowing - Alan Perlis
 The sooner you start to code, the longer the program will take - Roy Carlson
-It’s not a bug – it’s an undocumented feature - Anonymous
+It’s not a bug, it’s an undocumented feature - Anonymous
 Measuring programming progress by lines of code is like measuring aircraft building progress by weight - Bill Gates
 The hardest part of design is keeping features out - Donald Norman
 If you think it’s simple, then you have misunderstood the problem - Bjarne Stroustrup
