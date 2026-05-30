@@ -72,6 +72,7 @@ return {
                         keys = {
                             { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
                             { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+                            { icon = " ", key = "p", desc = "Recent Projects", action = ":Telescope projects" },
                             {
                                 icon = " ",
                                 key = "c",

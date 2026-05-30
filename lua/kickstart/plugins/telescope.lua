@@ -28,7 +28,7 @@ return {
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -65,6 +65,16 @@ return {
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
+          },
+          projects = {
+            prompt_prefix = "󱎸  ",
+            layout_strategy = "horizontal",
+            layout_config = {
+              anchor = "N",
+              height = 0.25,
+              width = 0.6,
+              prompt_position = "bottom",
+            },
           },
         },
       }
