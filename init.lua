@@ -84,9 +84,6 @@ for when you are first encountering a few different constructs in your Neovim co
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
--- generate help pages from docs
-vim.cmd('helptags ' .. vim.fn.stdpath 'config' .. '/doc')
-
 require 'config.neovide'
 require 'config.nvim'
 
