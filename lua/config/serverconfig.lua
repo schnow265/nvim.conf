@@ -15,13 +15,9 @@ M.lspconfig = {
             },
         },
     },
-    trivy = {},
-    asm_lsp = {},
     ast_grep = {},
     ruff = {},
     ty = {},
-    csharp_ls = {},
-    clangd = {},
     codebook = {
         filetypes = {
             "c",
