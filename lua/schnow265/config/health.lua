@@ -45,32 +45,18 @@ local cli_tools = {
         'mix',
         'elixir'
     },
-    dotnet = {
-        'dotnet',
-        'csharp-ls'
-    },
     python = {
         'uv',
         'ruff',
         'ty'
     },
-    rust = {
-        'rustup',
-        'cargo',
-        'rustc',
-    },
     ["Version Control"] = {
         'git'
     },
-    ["C/C++"] = {
-        'clang',
-        'clang++',
-        'lldb',
-        'clangd'
-    },
     ["General Tools"] = {
         'trivy',
-        'ast-grep'
+        'ast-grep',
+        'mise'
     },
     lua = {
         'lua',
