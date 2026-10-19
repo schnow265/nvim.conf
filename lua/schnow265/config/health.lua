@@ -47,15 +47,11 @@ local cli_tools = {
     },
     python = {
         'uv',
-        'ruff',
-        'ty'
     },
     ["Version Control"] = {
         'git'
     },
     ["General Tools"] = {
-        'trivy',
-        'ast-grep',
         'mise'
     },
     lua = {
